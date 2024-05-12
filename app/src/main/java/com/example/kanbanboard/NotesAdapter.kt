@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class NotesAdapter(private var notes: List<Note>, context: Context) : RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
-    private val db: NoteDbHelper = NoteDbHelper(context)
+    private val db: NoteDatabaseHelper = NoteDatabaseHelper(context)
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val titleView: TextView = itemView.findViewById(R.id.TitleView)
         val contentView: TextView = itemView.findViewById(R.id.contentView)

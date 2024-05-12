@@ -8,17 +8,17 @@ import com.example.kanbanboard.databinding.ActivityAddNoteBinding
 class AddNoteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAddNoteBinding
-    private lateinit var db: NoteDbHelper
+    private lateinit var db: NoteDatabaseHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAddNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = NoteDbHelper(this)
+        db = NoteDatabaseHelper(this)
 
-        binding.saveBtn.setOnClickListener{
-            val title = binding.titleEdit.text.toString()
-            val content = binding.contentEdit.text.toString()
+        binding.saveButton.setOnClickListener{
+            val title = binding.titleEditText.text.toString()
+            val content = binding.contentEditText.text.toString()
             val note = Note(0, title, content)
             db.insertNote(note)
             finish()

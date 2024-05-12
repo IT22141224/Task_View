@@ -2,21 +2,20 @@ package com.example.kanbanboard
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kanbanboard.databinding.ActivityUpdateNoteBinding
 
 class UpdateNoteActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityUpdateNoteBinding
-    private lateinit var db: NoteDbHelper
+    private lateinit var db: NoteDatabaseHelper
     private var noteId: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityUpdateNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = NoteDbHelper(this)
+        db = NoteDatabaseHelper(this)
 
         noteId  = intent.getIntExtra("note_id", -1)
         if(noteId == -1){

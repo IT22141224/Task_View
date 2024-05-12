@@ -5,23 +5,23 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class NoteDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
+class NoteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
     companion object {
-        private const val DATABASE_NAME = "notes-app.db"
+        private const val DATABASE_NAME = "notesapp.db"
         private const val DATABASE_VERSION = 1
-        private const val TABLE_NAME = "all-notes"
+        private const val TABLE_NAME = "allnotes"
         private const val COLUMN_ID = "id"
         private const val COLUMN_TITLE = "title"
         private const val COLUMN_CONTENT = "content"
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTableQuery = "CREATE TABLE IF NOT EXISTS \"$TABLE_NAME\" ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_CONTENT TEXT)"
+        val createTableQuery = "CREATE TABLE IF NOT EXISTS $TABLE_NAME ($COLUMN_ID INTEGER PRIMARY KEY, $COLUMN_TITLE TEXT, $COLUMN_CONTENT TEXT)"
         db?.execSQL(createTableQuery)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        val dropTableQuery = "DROP TABLE IF EXISTS \"$TABLE_NAME\""
+        val dropTableQuery = "DROP TABLE IF EXISTS $TABLE_NAME"
         db?.execSQL(dropTableQuery)
         onCreate(db)
     }
@@ -39,7 +39,7 @@ class NoteDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, 
     fun getAllNotes(): List<Note> {
         val noteList = mutableListOf<Note>()
         val db = readableDatabase
-        val query = "SELECT * FROM \"$TABLE_NAME\""
+        val query = "SELECT * FROM $TABLE_NAME"
         val cursor = db.rawQuery(query, null)
 
         while (cursor.moveToNext()) {

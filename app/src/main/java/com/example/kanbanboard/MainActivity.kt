@@ -9,14 +9,14 @@ import com.example.kanbanboard.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var db: NoteDbHelper
+    private lateinit var db: NoteDatabaseHelper
     private lateinit var notesAdapter: NotesAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = NoteDbHelper(this)
+        db = NoteDatabaseHelper(this)
         notesAdapter = NotesAdapter(db.getAllNotes(), this)
 
         binding.noteRecyclerView.layoutManager = LinearLayoutManager(this)
