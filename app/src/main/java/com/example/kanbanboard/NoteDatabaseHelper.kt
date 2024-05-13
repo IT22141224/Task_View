@@ -37,7 +37,7 @@ class NoteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
     }
 
     fun getAllNotes(): List<Note> {
-        val noteList = mutableListOf<Note>()
+        val notesList = mutableListOf<Note>()
         val db = readableDatabase
         val query = "SELECT * FROM $TABLE_NAME"
         val cursor = db.rawQuery(query, null)
@@ -48,11 +48,11 @@ class NoteDatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
             val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
 
             val note = Note(id, title, content)
-            noteList.add(note)
+            notesList.add(note)
         }
         cursor.close()
         db.close()
-        return noteList
+        return notesList
 
     }
 

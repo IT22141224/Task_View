@@ -14,8 +14,8 @@ class NotesAdapter(private var notes: List<Note>, context: Context) : RecyclerVi
 
     private val db: NoteDatabaseHelper = NoteDatabaseHelper(context)
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val titleView: TextView = itemView.findViewById(R.id.TitleView)
-        val contentView: TextView = itemView.findViewById(R.id.contentView)
+        val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
+        val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
         val updateButton: ImageView = itemView.findViewById(R.id.updateButton)
         val deleteButton: ImageView = itemView.findViewById(R.id.deleteButton)
     }
@@ -29,8 +29,8 @@ class NotesAdapter(private var notes: List<Note>, context: Context) : RecyclerVi
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val note = notes[position]
-        holder.titleView.text = note.title
-        holder.contentView.text = note.content
+        holder.titleTextView.text = note.title
+        holder.contentTextView.text = note.content
 
         holder.updateButton.setOnClickListener {
             val intent = Intent(holder.itemView.context, UpdateNoteActivity::class.java).apply {

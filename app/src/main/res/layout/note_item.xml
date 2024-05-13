@@ -21,7 +21,7 @@
             android:layout_marginTop="8dp">
             
             <TextView
-                android:id="@+id/TitleView"
+                android:id="@+id/titleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title"
@@ -49,7 +49,7 @@
         </RelativeLayout>
 
         <TextView
-            android:id="@+id/contentView"
+            android:id="@+id/contentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/content"
